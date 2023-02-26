@@ -21,8 +21,8 @@ def data_sync():
         with open('files/music.txt', 'w', encoding='utf-8') as fp:
             fp.write('')
     
-    if not os.path.exists('files/bible.txt'):
-        with open('files/bible.txt', 'w', encoding='utf-8') as fp:
+    if not os.path.exists('files/bible.csv'):
+        with open('files/bible.csv', 'w', encoding='utf-8') as fp:
             fp.write(f'verse,text\n" "," "')
 
     res = requests.get(f"{url}/stage-view/text.json", timeout=5)
@@ -50,7 +50,7 @@ def data_sync():
             text = text.replace('\n', ' ')
             text = text.replace('\r', '')
 
-            with open('files/bible.txt', 'w', encoding='utf-8') as fp:
+            with open('files/bible.csv', 'w', encoding='utf-8') as fp:
                 fp.write(f'verse,text\n{header},"{text}"')
 
 
